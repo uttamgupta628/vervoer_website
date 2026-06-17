@@ -97,10 +97,10 @@ function useInView(threshold = 0.15) {
 interface Feature  { icon: React.ReactNode; title: string; description: string; }
 interface Step     { icon: React.ReactNode; title: string; description: string; }
 interface Testimonial { name: string; role: string; avatar: string; text: string; rating: number; }
-interface PricingPlan {
-  name: string; price: string; period?: string; subtitle: string;
-  features: string[]; cta: string; highlighted: boolean; badge?: string;
-}
+// interface PricingPlan {
+//   name: string; price: string; period?: string; subtitle: string;
+//   features: string[]; cta: string; highlighted: boolean; badge?: string;
+// }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -140,23 +140,23 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const pricing: PricingPlan[] = [
-  {
-    name: "Basic", price: "Free", subtitle: "Perfect for occasional parkers.",
-    features: ["Basic search", "View availability", "Standard support"],
-    cta: "Get Started", highlighted: false,
-  },
-  {
-    name: "Premium", price: "$9", period: "/mo", subtitle: "For frequent and smart drivers.",
-    features: ["Everything in Basic", "Advance booking", "Real-time navigation", "Priority support"],
-    cta: "Start Free Trial", highlighted: true, badge: "Most Popular",
-  },
-  {
-    name: "Business", price: "Custom", subtitle: "For businesses and fleets.",
-    features: ["Everything in Premium", "Team dashboard", "Custom reports", "Dedicated manager"],
-    cta: "Contact Sales", highlighted: false,
-  },
-];
+// const pricing: PricingPlan[] = [
+//   {
+//     name: "Basic", price: "Free", subtitle: "Perfect for occasional parkers.",
+//     features: ["Basic search", "View availability", "Standard support"],
+//     cta: "Get Started", highlighted: false,
+//   },
+//   {
+//     name: "Premium", price: "$9", period: "/mo", subtitle: "For frequent and smart drivers.",
+//     features: ["Everything in Basic", "Advance booking", "Real-time navigation", "Priority support"],
+//     cta: "Start Free Trial", highlighted: true, badge: "Most Popular",
+//   },
+//   {
+//     name: "Business", price: "Custom", subtitle: "For businesses and fleets.",
+//     features: ["Everything in Premium", "Team dashboard", "Custom reports", "Dedicated manager"],
+//     cta: "Contact Sales", highlighted: false,
+//   },
+// ];
 
 // ─── Helper Components ────────────────────────────────────────────────────────
 
@@ -427,7 +427,7 @@ export default function VervoerLanding() {
   const featRef  = useInView();
   const howRef   = useInView();
   const testRef  = useInView();
-  const priceRef = useInView();
+//   const priceRef = useInView();
 
   return (
     <div className="font-sans text-gray-900 bg-white antialiased">
