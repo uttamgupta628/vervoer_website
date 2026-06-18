@@ -24,7 +24,7 @@ export default function Footer() {
 
           {/* Text */}
           <div className="md:ml-56 text-black">
-            <h2 className="text-5xl font-bold mb-3">Ready to Park Smarter?</h2>
+            <h2 className="text-5xl font-medium mb-3">Ready to Park Smarter?</h2>
             <p className="text-xl max-w-xl text-black">
               Download the Vervoer app and find your perfect parking spot today!
             </p>

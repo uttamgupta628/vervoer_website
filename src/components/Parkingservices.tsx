@@ -215,7 +215,7 @@ export default function ParkingServices() {
               <p className="text-xs font-bold tracking-[0.25em]  uppercase text-black">
                 The Vervoer Parking Team
               </p>
-              <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-black leading-tight">
+              <h1 className="mt-3 text-4xl sm:text-5xl font-medium text-black leading-tight">
                 We make it easy.
               </h1>
               <p className="mt-4 text-black text-sm leading-relaxed max-w-xs">
@@ -263,7 +263,7 @@ export default function ParkingServices() {
             ref={aboutRef.ref}
             className={`hidden-init ${aboutRef.inView ? "anim-fade-up" : ""}`}
           >
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
               Partnering Parking Services
             </h2>
             <p className="mt-5 text-gray-500 leading-relaxed text-base sm:text-lg">
@@ -311,7 +311,7 @@ export default function ParkingServices() {
                 style={{ animationDelay: `${i * 100}ms` }}
                 className={`text-center hidden-init ${statsRef.inView ? "anim-fade-up" : ""}`}
               >
-                <div className="text-4xl sm:text-5xl font-extrabold text-white">{s.value}</div>
+                <div className="text-4xl sm:text-5xl font-medium text-white">{s.value}</div>
                 <div className="mt-1 text-white/75 text-sm font-medium">{s.label}</div>
               </div>
             ))}
@@ -355,7 +355,7 @@ export default function ParkingServices() {
               <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
                 Why Choose Vervoer?
               </p>
-              <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
+              <h2 className="mt-3 text-3xl sm:text-4xl font-medium text-gray-900 leading-tight">
                 Parking that works{" "}
                 <span style={{
                   background: "linear-gradient(90deg,#f59e0b,#ef4444,#f59e0b)",
@@ -413,7 +413,7 @@ export default function ParkingServices() {
               <p className="text-black text-xs font-bold tracking-[0.25em] uppercase">
                 Ready to Park Smarter?
               </p>
-              <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-black leading-tight">
+              <h2 className="mt-3 text-3xl sm:text-5xl font-medium text-black leading-tight">
                 Find your spot in seconds.
               </h2>
               <p className="mt-4 text-black max-w-xl mx-auto">

@@ -317,7 +317,7 @@ export default function Contact() {
               <p className="text-xs font-bold tracking-[0.25em] text-white/70 uppercase">
                 Vervoer Support Team
               </p>
-              <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+              <h1 className="mt-3 text-4xl sm:text-5xl font-medium text-white leading-tight">
                 Get in{" "}
                 <span className="underline decoration-white/40 decoration-4 underline-offset-4">
                   touch
@@ -333,10 +333,13 @@ export default function Contact() {
                   hover:scale-105 hover:shadow-lg transition-all duration-200 text-sm">
                   Send a Message
                 </button>
-                <button className="px-6 py-3 border-2 border-white/50 text-white font-semibold rounded-2xl
-                  hover:bg-white/10 hover:scale-105 transition-all duration-200 text-sm flex items-center gap-2">
-                  View on Map <ChevronRight size={16} />
-                </button>
+                <button
+  onClick={() => document.getElementById("map-section")?.scrollIntoView({ behavior: "smooth" })}
+  className="px-6 py-3 border-2 border-white/50 text-white font-semibold rounded-2xl
+    hover:bg-white/10 hover:scale-105 transition-all duration-200 text-sm flex items-center gap-2"
+>
+  View on Map <ChevronRight size={16} />
+</button>
               </div>
 
               {/* Stat chips — visible on mobile too */}
@@ -402,14 +405,14 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Avg. Response</p>
-                  <p className="text-xl font-extrabold text-gray-900 leading-tight">Under 2 hrs</p>
+                  <p className="text-xl font-medium text-gray-900 leading-tight">Under 2 hrs</p>
                   <p className="text-[11px] text-gray-400 mt-0.5">Mon – Sat, 9 am – 6 pm</p>
                 </div>
               </div>
 
               {/* Satisfaction stat */}
               <div className="bg-white/15 backdrop-blur-sm rounded-2xl px-5 py-4 flex items-center gap-4">
-                <div className="text-3xl font-extrabold text-white leading-none">98%</div>
+                <div className="text-3xl font-medium text-white leading-none">98%</div>
                 <div>
                   <p className="text-white font-semibold text-sm">Satisfaction rate</p>
                   <p className="text-white/60 text-xs mt-0.5">Based on 8,000+ reviews</p>
@@ -438,7 +441,7 @@ export default function Contact() {
             <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
               Reach Us
             </p>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
+            <h2 className="mt-3 text-3xl sm:text-4xl font-medium text-gray-900">
               Multiple ways to connect
             </h2>
           </div>
@@ -464,7 +467,7 @@ export default function Contact() {
                 <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase mb-1">
                   Contact Form
                 </p>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2">
+                <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-2">
                   Send us a message
                 </h2>
                 <p className="text-gray-400 text-sm mb-8 leading-relaxed">
@@ -577,7 +580,7 @@ export default function Contact() {
                 <p className="text-xs font-bold tracking-[0.25em] text-amber-400 uppercase mb-2">
                   Talk to us directly
                 </p>
-                <h3 className="text-2xl font-extrabold text-white leading-snug mb-3">
+                <h3 className="text-2xl font-medium text-white leading-snug mb-3">
                   Real people.<br />
                   <span style={{
                     background: "linear-gradient(90deg,#f59e0b,#fbbf24,#f59e0b)",
@@ -666,7 +669,7 @@ export default function Contact() {
               </div>
 
               {/* Map */}
-              <div className="relative">
+              <div className="relative" id="map-section">
                 <div className="absolute -top-3 -right-3 w-40 h-52 bg-amber-500 rounded-3xl
                   hidden sm:block transition-transform duration-500 hover:translate-x-1 hover:-translate-y-1 z-0" />
                 <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl" style={{ height: 300 }}>
@@ -695,7 +698,7 @@ export default function Contact() {
                 <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase mb-1">
                   Why Reach Out?
                 </p>
-                <h3 className="font-extrabold text-gray-900 text-xl mb-5">
+                <h3 className="font-medium text-gray-900 text-xl mb-5">
                   We're{" "}
                   <span style={{
                     background: "linear-gradient(90deg,#f59e0b,#ef4444,#f59e0b)",
@@ -743,7 +746,7 @@ export default function Contact() {
               <p className="text-white/70 text-xs font-bold tracking-[0.25em] uppercase">
                 Still have questions?
               </p>
-              <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+              <h2 className="mt-3 text-3xl sm:text-5xl font-medium text-white leading-tight">
                 We're one message away.
               </h2>
               <p className="mt-4 text-white/80 max-w-xl mx-auto text-sm">

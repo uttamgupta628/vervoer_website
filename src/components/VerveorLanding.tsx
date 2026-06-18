@@ -18,6 +18,7 @@ import phone2 from "../assets/phone2.png";
 import phone3 from "../assets/phone3.png";
 import phoneImg from "../assets/phone_img.png";
 import footerPhone from "../assets/footer-phone.png";
+import Navbar from "./Navbar";
 
 // ─── Animation Styles ────────────────────────────────────────────────────────
 
@@ -382,7 +383,7 @@ const AppSection = () => {
             <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
               The App
             </p>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
+            <h2 className="mt-3 text-3xl sm:text-4xl font-medium text-gray-900 leading-tight">
               Everything at your{" "}
               <span
                 style={{
@@ -536,7 +537,7 @@ export default function VervoerLanding() {
   return (
     <div className="font-sans text-gray-900 bg-white antialiased">
       <style>{animationStyles}</style>
-
+      <Navbar/>
       <Hero />
 
       <div className="h-24 md:h-32" />

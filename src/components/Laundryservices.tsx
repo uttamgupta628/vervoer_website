@@ -264,7 +264,7 @@ export default function LaundryServices() {
               <p className="text-xs font-bold tracking-[0.25em] text-black uppercase">
                 The Vervoer Laundry Team
               </p>
-              <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-black leading-tight">
+              <h1 className="mt-3 text-4xl sm:text-5xl font-medium text-black leading-tight">
                 We make Laundry easy.
               </h1>
               <p className="mt-4 text-black text-sm leading-relaxed max-w-xs">
@@ -321,7 +321,7 @@ export default function LaundryServices() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-5 text-center">
           <div ref={aboutRef.ref} className={`hidden-init ${aboutRef.inView ? "anim-fade-up" : ""}`}>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl font-medium text-gray-900">
               Professional Laundry Services
             </h2>
             <p className="mt-5 text-gray-500 leading-relaxed text-base sm:text-lg">
@@ -365,7 +365,7 @@ export default function LaundryServices() {
                 style={{ animationDelay: `${i * 100}ms` }}
                 className={`text-center hidden-init ${statsRef.inView ? "anim-fade-up" : ""}`}
               >
-                <div className="text-4xl sm:text-5xl font-extrabold text-white">{s.value}</div>
+                <div className="text-4xl sm:text-5xl font-medium text-white">{s.value}</div>
                 <div className="mt-1 text-white/75 text-sm font-medium">{s.label}</div>
               </div>
             ))}
@@ -374,52 +374,63 @@ export default function LaundryServices() {
       </section>
 
       {/* ── How It Works ──────────────────────────────────────────────────── */}
-      <section className="py-24 bg-[#FFF8EE]">
-        <div className="max-w-7xl mx-auto px-5">
+     <section className="py-24 bg-[#FFF8EE]">
+  <div className="max-w-7xl mx-auto px-5">
+    <div
+      ref={processRef.ref}
+      className={`text-center hidden-init ${processRef.inView ? "anim-fade-up" : ""}`}
+    >
+      <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
+        How It Works
+      </p>
+      <h2 className="mt-3 text-3xl sm:text-4xl font-medium text-gray-900">
+        Clean clothes in 4 simple steps
+      </h2>
+    </div>
+
+    <div className="mt-16 relative">
+      {/* Connector line + moving dot */}
+      <div className="hidden md:block absolute top-8 left-[12%] right-[12%] h-[2px] z-0">
+        <div className="border-t-2 border-dashed border-amber-300 w-full" />
+        <div
+          className={`absolute top-[-2px] left-0 w-20 h-[4px] rounded-full
+            bg-gradient-to-r from-yellow-300 via-amber-500 to-transparent
+            ${processRef.inView ? "animate-road-line" : "opacity-0"}`}
+        />
+      </div>
+
+      <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {process.map((p, i) => (
           <div
-            ref={processRef.ref}
-            className={`text-center hidden-init ${processRef.inView ? "anim-fade-up" : ""}`}
+            key={p.title}
+            style={{ animationDelay: `${i * 120}ms` }}
+            className={`flex flex-col items-center text-center gap-3
+              hidden-init ${processRef.inView ? "anim-fade-up" : ""}`}
           >
-            <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
-              How It Works
-            </p>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Clean clothes in 4 simple steps
-            </h2>
-          </div>
-
-          <div className="mt-16 relative">
-            {/* Connector line */}
-            <div className="hidden md:block absolute top-8 left-[12%] right-[12%] h-[2px] border-t-2 border-dashed border-amber-300 z-0" />
-
-            <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8">
-              {process.map((p, i) => (
-                <div
-                  key={p.title}
-                  style={{ animationDelay: `${i * 120}ms` }}
-                  className={`flex flex-col items-center text-center gap-3
-                    hidden-init ${processRef.inView ? "anim-fade-up" : ""}`}
-                >
-                  <div className="relative">
-                    <div className="w-16 h-16 rounded-full bg-white border-2 border-amber-400
-                      flex items-center justify-center text-amber-500 shadow-lg
-                      hover:bg-amber-500 hover:text-white hover:scale-110
-                      transition-all duration-300 cursor-default">
-                      {p.icon}
-                    </div>
-                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-amber-500
-                      text-white text-xs font-bold flex items-center justify-center shadow">
-                      {p.step}
-                    </span>
-                  </div>
-                  <p className="font-bold text-gray-900">{p.title}</p>
-                  <p className="text-xs text-gray-500 max-w-[100px]">{p.desc}</p>
-                </div>
-              ))}
+            <div className="relative">
+              <div
+                className="w-16 h-16 rounded-full bg-white border-2 border-amber-400
+                  flex items-center justify-center text-amber-500 shadow-lg
+                  hover:bg-amber-500 hover:text-white hover:scale-110
+                  transition-all duration-300 cursor-default"
+              >
+                {p.icon}
+              </div>
+              <span
+                className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-amber-500
+                  text-white text-xs font-bold flex items-center justify-center shadow"
+              >
+                {p.step}
+              </span>
             </div>
+            <p className="font-bold text-gray-900">{p.title}</p>
+            <p className="text-xs text-gray-500 max-w-[100px]">{p.desc}</p>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ── Why Choose + Image ────────────────────────────────────────────── */}
       <section className="py-24 bg-gray-50">
@@ -455,7 +466,7 @@ export default function LaundryServices() {
               <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
                 Why Choose Vervoer Laundry?
               </p>
-              <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
+              <h2 className="mt-3 text-3xl sm:text-4xl font-medium text-gray-900 leading-tight">
                 Laundry that works{" "}
                 <span style={{
                   background: "linear-gradient(90deg,#f59e0b,#ef4444,#f59e0b)",
@@ -503,7 +514,7 @@ export default function LaundryServices() {
             className={`text-center hidden-init ${planRef.inView ? "anim-fade-up" : ""}`}
           >
             <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">Pricing</p>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
+            <h2 className="mt-3 text-3xl sm:text-4xl font-medium text-gray-900">
               Simple, Transparent Pricing
             </h2>
             <p className="mt-4 text-gray-500 max-w-xl mx-auto">
@@ -534,7 +545,7 @@ export default function LaundryServices() {
                     {p.name}
                   </h3>
                   <div className="mt-3 flex items-end gap-1">
-                    <span className="text-5xl font-extrabold">{p.price}</span>
+                    <span className="text-5xl font-medium">{p.price}</span>
                     {p.period && <span className="pb-2 text-lg">{p.period}</span>}
                   </div>
                   <p className={`mt-2 text-sm ${p.highlighted ? "text-white/80" : "text-gray-500"}`}>
@@ -578,7 +589,7 @@ export default function LaundryServices() {
               <p className="text-black text-xs font-bold tracking-[0.25em] uppercase">
                 Ready for Fresh Clothes?
               </p>
-              <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-black leading-tight">
+              <h2 className="mt-3 text-3xl sm:text-5xl font-medium text-black leading-tight">
                 Book your first pickup today.
               </h2>
               <p className="mt-4 text-black max-w-xl mx-auto">
