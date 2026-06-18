@@ -63,7 +63,50 @@ const stats = [
   },
 ];
 
+
+
 export default function Hero() {
+
+  const lines = [
+  "Find Parking.",
+  "Schedule Laundry.",
+  "Simplify Your day.",
+];
+
+const [displayedLines, setDisplayedLines] = useState([
+  "",
+  "",
+  "",
+]);
+
+useEffect(() => {
+  let lineIndex = 0;
+  let charIndex = 0;
+
+  const typeNext = () => {
+    if (lineIndex >= lines.length) return;
+
+    const currentLine = lines[lineIndex];
+
+    if (charIndex <= currentLine.length) {
+      setDisplayedLines((prev) => {
+        const updated = [...prev];
+        updated[lineIndex] = currentLine.slice(0, charIndex);
+        return updated;
+      });
+
+      charIndex++;
+      setTimeout(typeNext, 80); // typing speed
+    } else {
+      lineIndex++;
+      charIndex = 0;
+      setTimeout(typeNext, 400); // delay before next line
+    }
+  };
+
+  typeNext();
+}, []);
+
   // Trigger animation when stats card enters screen
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -129,16 +172,33 @@ export default function Hero() {
 
           {/* Left Section */}
           <div className="text-white animate-fade-up">
+<h1 className="text-5xl md:text-6xl lg:text-7xl font-medium leading-tight">
+  {/* Line 1 */}
+  <div className="min-h-[70px] md:min-h-[85px] lg:min-h-[95px]">
+    {displayedLines[0]}
+    {displayedLines[0].length < lines[0].length && (
+      <span className="animate-pulse">|</span>
+    )}
+  </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-              Find Parking.
-              <br />
-              Schedule Laundry.
-              <br />
-              <span className="text-[#F59E0B]">
-                Simplify Your day.
-              </span>
-            </h1>
+  {/* Line 2 */}
+  <div className="min-h-[70px] md:min-h-[85px] lg:min-h-[95px]">
+    {displayedLines[1]}
+    {displayedLines[1].length > 0 &&
+      displayedLines[1].length < lines[1].length && (
+        <span className="animate-pulse">|</span>
+      )}
+  </div>
+
+  {/* Line 3 */}
+  <div className="text-[#F59E0B] min-h-[70px] md:min-h-[85px] lg:min-h-[95px]">
+    {displayedLines[2]}
+    {displayedLines[2].length > 0 &&
+      displayedLines[2].length < lines[2].length && (
+        <span className="animate-pulse">|</span>
+      )}
+  </div>
+</h1>
 
             <p className="mt-6 max-w-md text-lg text-gray-300 leading-relaxed">
               Vervoer combines real-time parking and professional
@@ -149,13 +209,13 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap gap-4">
 
               <a
-                href="#"
+                href="https://play.google.com/store/apps/details?id=com.uttam.verover"
                 className="hover:scale-105 transition-transform duration-300"
               >
                 <img
                   src={googlePlay}
                   alt="Get it on Google Play"
-                  className="h-14 w-auto"
+                  className="h-14 w-auto rounded-xl"
                 />
               </a>
 
@@ -166,7 +226,7 @@ export default function Hero() {
                 <img
                   src={appStore}
                   alt="Download on the App Store"
-                  className="h-14 w-auto"
+                  className="h-14 w-auto rounded-xl"
                 />
               </a>
 

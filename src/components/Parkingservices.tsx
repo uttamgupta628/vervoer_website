@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import pakring from "../assets/parking.png";
 
 // ─── Animation Styles ────────────────────────────────────────────────────────
 
@@ -211,13 +212,13 @@ export default function ParkingServices() {
           >
             {/* Left text */}
             <div className={`relative z-10 p-8 sm:p-12 max-w-md hidden-init ${heroRef.inView ? "anim-slide-right" : ""}`}>
-              <p className="text-xs font-bold tracking-[0.25em] text-white/70 uppercase">
+              <p className="text-xs font-bold tracking-[0.25em]  uppercase text-black">
                 The Vervoer Parking Team
               </p>
-              <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+              <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-black leading-tight">
                 We make it easy.
               </h1>
-              <p className="mt-4 text-white/80 text-sm leading-relaxed max-w-xs">
+              <p className="mt-4 text-black text-sm leading-relaxed max-w-xs">
                 Teamwork makes the dream work. At Vervoer Parking,
                 we're here to help your parking experience be as smooth
                 and seamless as possible.
@@ -242,7 +243,7 @@ export default function ParkingServices() {
               {/* Gradient overlay blending image into amber */}
               <div className="absolute inset-0 z-10 bg-gradient-to-r from-amber-500 via-amber-500/40 to-transparent" />
               <img
-                src="/src/assets/parking.png"
+                src={pakring}
                 alt="Parking facility"
                 className="w-full h-full object-cover"
               />
@@ -329,7 +330,7 @@ export default function ParkingServices() {
             <div className={`hidden-init ${benefitRef.inView ? "anim-slide-right" : ""}`}>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
                 <img
-                  src="/src/assets/parking.png"
+                  src={pakring}
                   alt="Vervoer parking facility"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
@@ -409,13 +410,13 @@ export default function ParkingServices() {
             <div className="absolute -bottom-8 -right-8 w-36 h-36 rounded-full bg-white/10 pointer-events-none" />
 
             <div className="relative z-10">
-              <p className="text-white/70 text-xs font-bold tracking-[0.25em] uppercase">
+              <p className="text-black text-xs font-bold tracking-[0.25em] uppercase">
                 Ready to Park Smarter?
               </p>
-              <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+              <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-black leading-tight">
                 Find your spot in seconds.
               </h2>
-              <p className="mt-4 text-white/80 max-w-xl mx-auto">
+              <p className="mt-4 text-black max-w-xl mx-auto">
                 Join over 50,000 drivers who trust Vervoer for stress-free parking every day.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">

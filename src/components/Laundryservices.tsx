@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import dryImg from "../assets/dry.png";
 
 // ─── Animation Styles ─────────────────────────────────────────────────────────
 
@@ -260,13 +261,13 @@ export default function LaundryServices() {
 
             {/* Left text */}
             <div className={`relative z-10 p-8 sm:p-12 max-w-lg hidden-init ${heroRef.inView ? "anim-slide-right" : ""}`}>
-              <p className="text-xs font-bold tracking-[0.25em] text-white/70 uppercase">
+              <p className="text-xs font-bold tracking-[0.25em] text-black uppercase">
                 The Vervoer Laundry Team
               </p>
-              <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+              <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-black leading-tight">
                 We make Laundry easy.
               </h1>
-              <p className="mt-4 text-white/80 text-sm leading-relaxed max-w-xs">
+              <p className="mt-4 text-black text-sm leading-relaxed max-w-xs">
                 From pickup to delivery, our professional laundry service
                 takes care of your clothes so you can focus on what matters
                 most. Fast, reliable, and hassle-free.
@@ -291,7 +292,7 @@ export default function LaundryServices() {
             >
               <div className="absolute inset-0 z-10 bg-gradient-to-r from-amber-500 via-amber-500/50 to-transparent" />
               <img
-                src="/src/assets/dry.png"
+                src={dryImg}
                 alt="Laundry service"
                 className="w-full h-full object-cover"
               />
@@ -574,13 +575,13 @@ export default function LaundryServices() {
               rounded-full bg-white/5 pointer-events-none anim-spin-slow" />
 
             <div className="relative z-10 text-center">
-              <p className="text-white/70 text-xs font-bold tracking-[0.25em] uppercase">
+              <p className="text-black text-xs font-bold tracking-[0.25em] uppercase">
                 Ready for Fresh Clothes?
               </p>
-              <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+              <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-black leading-tight">
                 Book your first pickup today.
               </h2>
-              <p className="mt-4 text-white/80 max-w-xl mx-auto">
+              <p className="mt-4 text-black max-w-xl mx-auto">
                 Join over 10,000 happy customers who trust Vervoer for effortless
                 laundry every week.
               </p>
