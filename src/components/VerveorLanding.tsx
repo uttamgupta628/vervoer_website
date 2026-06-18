@@ -22,62 +22,37 @@ import footerPhone from "../assets/footer-phone.png";
 // ─── Animation Styles ────────────────────────────────────────────────────────
 
 const animationStyles = `
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
+@keyframes floatingCarousel {
+  0% {
+    transform: translateY(0px);
   }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  50% {
+    transform: translateY(-12px);
   }
-  @keyframes slideLeft {
-    from { opacity: 0; transform: translateX(60px); }
-    to   { opacity: 1; transform: translateX(0); }
+  100% {
+    transform: translateY(0px);
   }
-  @keyframes slideRight {
-    from { opacity: 0; transform: translateX(-60px); }
-    to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-floating-carousel {
+  animation: floatingCarousel 4s ease-in-out infinite;
+}
+
+@keyframes phoneFloat {
+  0% {
+    transform: translateY(0px);
   }
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.85); }
-    to   { opacity: 1; transform: scale(1); }
+  50% {
+    transform: translateY(-8px);
   }
-  @keyframes popIn {
-    0%   { opacity: 0; transform: scale(0.5) translateY(20px); }
-    70%  { transform: scale(1.08) translateY(-4px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
+  100% {
+    transform: translateY(0px);
   }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-10px); }
-  }
-  @keyframes pulse-ring {
-    0%   { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
-    70%  { box-shadow: 0 0 0 12px rgba(245,158,11,0); }
-    100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
-  }
-  @keyframes shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-  @keyframes dash {
-    from { stroke-dashoffset: 1000; }
-    to   { stroke-dashoffset: 0; }
-  }
-  @keyframes starPop {
-    0%   { opacity: 0; transform: scale(0) rotate(-30deg); }
-    60%  { transform: scale(1.3) rotate(5deg); }
-    100% { opacity: 1; transform: scale(1) rotate(0); }
-  }
-  .animate-fade-up    { animation: fadeUp 0.7s ease forwards; }
-  .animate-fade-in    { animation: fadeIn 0.7s ease forwards; }
-  .animate-slide-left { animation: slideLeft 0.7s ease forwards; }
-  .animate-slide-right{ animation: slideRight 0.7s ease forwards; }
-  .animate-scale-in   { animation: scaleIn 0.6s ease forwards; }
-  .animate-pop-in     { animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
-  .animate-float      { animation: float 3s ease-in-out infinite; }
-  .animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
-  .opacity-0-init     { opacity: 0; }
+}
+
+.animate-phone-float {
+  animation: phoneFloat 3s ease-in-out infinite;
+}
 `;
 
 // ─── useInView Hook ───────────────────────────────────────────────────────────
@@ -345,10 +320,14 @@ const AppSection = () => {
   const next = () => setCurrent((c) => (c + 1) % screens.length);
 
   useEffect(() => {
-    if (!isPlaying) return;
-    const timer = setInterval(next, 3000);
-    return () => clearInterval(timer);
-  }, [isPlaying, current]);
+  if (!isPlaying) return;
+
+  const timer = setInterval(() => {
+    setCurrent((prev) => (prev + 1) % screens.length);
+  }, 2000);
+
+  return () => clearInterval(timer);
+}, [isPlaying, screens.length]);
 
   const getStyle = (index: number): React.CSSProperties => {
     const total = screens.length;
@@ -480,12 +459,14 @@ const AppSection = () => {
 
           {/* Right: Carousel */}
           <div
-            className={`flex-1 relative flex items-center justify-center min-h-[460px]
-              opacity-0-init ${inView ? "animate-slide-left" : ""}`}
-            style={{ animationDelay: "200ms" }}
-          >
+  className={`flex-1 relative flex items-center justify-center min-h-[460px]
+    opacity-0-init ${
+      inView ? "animate-slide-left animate-floating-carousel" : ""
+    }`}
+  style={{ animationDelay: "200ms" }}
+>
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-64 h-64 rounded-full bg-amber-200/40 blur-3xl" />
+              <div className="w-72 h-72 rounded-full bg-amber-300/40 blur-3xl animate-pulse" />
             </div>
 
             <button
@@ -503,18 +484,19 @@ const AppSection = () => {
 
             <div className="flex items-end justify-center gap-3 px-14">
               {screens.map((src, i) => (
-                <div
-                  key={i}
-                  onClick={() => {
-                    setCurrent(i);
-                    setIsPlaying(false);
-                  }}
-                  style={{
-                    ...getStyle(i),
-                    transition: "all 0.55s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                  className="rounded-[2rem] overflow-hidden aspect-[9/19] bg-gray-100 cursor-pointer shrink-0"
-                >
+  <div
+    key={i}
+    onClick={() => {
+      setCurrent(i);
+      setIsPlaying(false);
+    }}
+    style={{
+      ...getStyle(i),
+      transition: "all 0.55s cubic-bezier(0.4, 0, 0.2, 1)",
+      animationDelay: `${i * 0.3}s`,
+    }}
+    className="rounded-[2rem] overflow-hidden aspect-[9/19] bg-gray-100 cursor-pointer shrink-0 animate-phone-float"
+  >
                   <img
                     src={src}
                     alt={`App screen ${i + 1}`}
@@ -569,7 +551,7 @@ export default function VervoerLanding() {
             <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
               Why Choose Vervoer?
             </p>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900 max-w-3xl mx-auto leading-tight">
+            <h2 className="mt-3 text-3xl sm:text-4xl font-lora font-semibold text-gray-900 max-w-3xl mx-auto leading-tight">
               Everything You Need for a Smarter Parking Experience
             </h2>
           </div>
@@ -592,7 +574,7 @@ export default function VervoerLanding() {
             <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
               Features
             </p>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-center text-gray-900">
+            <h2 className="font-lora text-4xl font-semibold">
               Designed for Convenience
             </h2>
           </div>
@@ -634,20 +616,28 @@ export default function VervoerLanding() {
             className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center"
           >
             <div
-              className={`lg:w-56 shrink-0 opacity-0 ${
-                howRef.inView ? "animate-slide-right" : ""
-              }`}
+             className={`lg:w-56 shrink-0 ${
+  howRef.inView
+    ? "animate-slide-right"
+    : "opacity-0 -translate-x-8"
+}`}
             >
               <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
                 How It Works
               </p>
-              <h2 className="mt-3 text-3xl font-extrabold text-gray-900 leading-tight">
+              <h2 className="font-lora text-4xl font-semibold">
                 Park in 5 Simple Steps
               </h2>
             </div>
 
             <div className="flex-1 relative">
-              <div className="hidden sm:block absolute inset-x-[28px] top-[70px] border-t-2 border-dashed border-amber-300 z-0" />
+          <div className="hidden sm:block absolute inset-x-[28px] top-[70px] z-0">
+  {/* Dashed Line */}
+  <div className="border-t-2 border-dashed border-amber-300" />
+
+  {/* Moving Yellow Dot */}
+ <div className="absolute top-[-2px] left-0 w-20 h-[4px] rounded-full bg-gradient-to-r from-yellow-300 via-amber-500 to-transparent animate-road-line" />
+</div>
               <div className="relative z-10 grid grid-cols-2 sm:grid-cols-5 gap-6">
                 {steps.map((s, i) => (
                   <div
@@ -695,8 +685,8 @@ export default function VervoerLanding() {
             <p className="text-xs font-bold tracking-[0.25em] text-amber-500 uppercase">
               What Our Users Say
             </p>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Trusted by Thousands of drivers
+            <h2 className="font-lora text-4xl font-semibold">
+              Trusted by Thousands of Drivers
             </h2>
           </div>
 

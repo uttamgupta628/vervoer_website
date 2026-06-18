@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 html {
@@ -54,3 +55,19 @@ html {
 .animate-step {
   animation: stepFadeUp 0.6s ease forwards;
 }
+
+
+@keyframes roadLine {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100vw - 700px));
+  }
+}
+
+.animate-road-line {
+  animation: roadLine 4s linear infinite;
+}
+
+

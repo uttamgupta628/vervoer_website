@@ -120,31 +120,38 @@ useEffect(() => {
 
   // Count animation
   useEffect(() => {
-    if (!inView) return;
+  if (!inView) return;
 
-    stats.forEach((stat, index) => {
-      let current = 0;
+  const duration = 2000; // counting duration
+  const pause = 3000; // wait after reaching max
 
-      const increment = Math.ceil(
-        stat.end / 50
+  const animateCounters = () => {
+    const start = Date.now();
+
+    const timer = setInterval(() => {
+      const progress = Math.min(
+        (Date.now() - start) / duration,
+        1
       );
 
-      const timer = setInterval(() => {
-        current += increment;
+      setCounts(
+        stats.map((stat) =>
+          Math.floor(stat.end * progress)
+        )
+      );
 
-        if (current >= stat.end) {
-          current = stat.end;
-          clearInterval(timer);
-        }
+      if (progress === 1) {
+        clearInterval(timer);
 
-        setCounts((prev) => {
-          const updated = [...prev];
-          updated[index] = current;
-          return updated;
-        });
-      }, 40);
-    });
-  }, [inView]);
+        setTimeout(() => {
+          animateCounters(); // restart
+        }, pause);
+      }
+    }, 30);
+  };
+
+  animateCounters();
+}, [inView]);
 
   return (
     <section className="relative min-h-screen">
@@ -172,7 +179,7 @@ useEffect(() => {
 
           {/* Left Section */}
           <div className="text-white animate-fade-up">
-<h1 className="text-5xl md:text-6xl lg:text-7xl font-medium leading-tight">
+<h1 className="font-lora text-5xl md:text-6xl lg:text-6xl font-semibold leading-tight tracking-tight">
   {/* Line 1 */}
   <div className="min-h-[70px] md:min-h-[85px] lg:min-h-[95px]">
     {displayedLines[0]}

@@ -197,7 +197,7 @@ export default function ParkingServices() {
   const ctaRef     = useInView();
 
   return (
-    <div className="font-sans text-gray-900 bg-white antialiased">
+    <div className="font-lora text-gray-900 bg-white antialiased">
       <style>{styles}</style>
 
       {/* ── Navbar ─────────────────────────────────────────────────────── */}

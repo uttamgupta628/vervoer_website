@@ -430,7 +430,7 @@ export default function LaundryServices() {
             <div className={`hidden-init ${benefitRef.inView ? "anim-slide-right" : ""}`}>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
                 <img
-                  src="/src/assets/dry.png"
+                  src={dryImg}
                   alt="Laundry service"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

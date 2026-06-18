@@ -1,6 +1,11 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
+      fontFamily: {
+        lora: ["Lora", "serif"],
+      },
+
       keyframes: {
         "slide-up": {
           "0%": {
@@ -13,6 +18,7 @@ module.exports = {
           },
         },
       },
+
       animation: {
         "slide-up": "slide-up 0.8s ease-out forwards",
       },
