@@ -146,7 +146,7 @@ export default function Hero() {
               >
                 <img src={googlePlay} alt="Get it on Google Play" className="h-14 w-auto rounded-xl" />
               </a>
-              <a href="#" className="hover:scale-105 transition-transform duration-300">
+              <a href="https://apps.apple.com/in/app/vervoer/id1671847466" className="hover:scale-105 transition-transform duration-300">
                 <img src={appStore} alt="Download on the App Store" className="h-14 w-auto rounded-xl" />
               </a>
             </div>

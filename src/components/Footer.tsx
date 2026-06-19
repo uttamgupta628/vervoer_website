@@ -39,11 +39,13 @@ export default function Footer() {
               className="h-14 cursor-pointer hover:scale-105 transition duration-300"
             />
             </a>
+            <a href="https://apps.apple.com/in/app/vervoer/id1671847466" className="hover:scale-105 transition-transform duration-300">
             <img
               src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
               alt="App Store"
               className="h-14 cursor-pointer hover:scale-105 transition duration-300"
             />
+            </a>
           </div>
         </div>
       </div>

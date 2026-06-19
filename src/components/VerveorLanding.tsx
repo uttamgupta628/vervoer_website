@@ -404,6 +404,11 @@ const AppSection = () => {
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <a
+                href="https://apps.apple.com/in/app/vervoer/id1671847466"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
               <button
                 className="flex items-center gap-2 px-5 py-3 bg-gray-900 text-white rounded-2xl text-sm font-semibold
                 hover:bg-gray-700 hover:scale-105 transition-all duration-200 shadow-lg"
@@ -418,6 +423,7 @@ const AppSection = () => {
                   </div>
                 </div>
               </button>
+              </a>
               <a
                 href="https://play.google.com/store/apps/details?id=com.uttam.verover"
                 target="_blank"
